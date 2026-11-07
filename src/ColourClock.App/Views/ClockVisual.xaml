@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="ColourClock.App.Views.ClockVisual"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    IsTabStop="False">
+
+    <Grid x:Name="Root" Background="Transparent">
+
+        <!-- Animated stage colour -->
+        <Rectangle x:Name="BackgroundRect" IsHitTestVisible="False" />
+
+        <Canvas x:Name="Stage">
+
+            <!-- Clock holder: origin = stage centre, scaled by MainTimeline.checkPos() -->
+            <Canvas x:Name="Holder" Width="0" Height="0" IsHitTestVisible="False">
+                <Canvas.RenderTransform>
+                    <ScaleTransform x:Name="HolderScale" ScaleX="1" ScaleY="1" />
+                </Canvas.RenderTransform>
+
+                <TextBlock
+                    x:Name="ClockText"
+                    Width="855.9"
+                    FontFamily="{StaticResource ClockFont}"
+                    FontSize="190.5"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    Opacity="0.7529"
+                    TextAlignment="Center"
+                    TextWrapping="NoWrap"
+                    IsHitTestVisible="False" />
+
+                <TextBlock
+                    x:Name="ColourText"
+                    Width="855.9"
+                    FontFamily="{StaticResource ClockFont}"
+                    FontSize="190.5"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    Opacity="0.7529"
+                    TextAlignment="Center"
+                    TextWrapping="NoWrap"
+                    IsHitTestVisible="False" />
+
+                <Rectangle x:Name="Divider" Width="734" Height="1" IsHitTestVisible="False">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Color="#73FFFFFF" Offset="0" />
+                            <GradientStop Color="#B3FFFFFF" Offset="0.5176" />
+                            <GradientStop Color="#73FFFFFF" Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+
+            <!-- Brand block (sprites 16 / 15) -->
+            <TextBlock
+                x:Name="TitleText"
+                FontFamily="{StaticResource ClockFont}"
+                FontSize="12"
+                FontWeight="Medium"
+                Foreground="White"
+                Opacity="0.698"
+                Text="The Colour Clock."
+                IsHitTestVisible="False" />
+
+            <TextBlock
+                x:Name="SubheadText"
+                FontFamily="{StaticResource ClockFont}"
+                FontSize="12"
+                FontWeight="Medium"
+                Foreground="White"
+                Opacity="0.447"
+                Text="Representing time as a hexadecimal colour value."
+                IsHitTestVisible="False" />
+
+        </Canvas>
+
+        <!-- DARKEN vignette: transparent centre, 20% black towards the corners -->
+        <Rectangle x:Name="Vignette" IsHitTestVisible="False">
+            <Rectangle.Fill>
+                <RadialGradientBrush MappingMode="Absolute">
+                    <GradientStop Color="#00000000" Offset="0" />
+                    <GradientStop Color="#00000000" Offset="0.047" />
+                    <GradientStop Color="#33000000" Offset="0.863" />
+                    <GradientStop Color="#33000000" Offset="1" />
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- 1px border, 5px inset, 50% opacity -->
+        <Canvas x:Name="BorderLayer" Opacity="0.5" IsHitTestVisible="False">
+            <Rectangle x:Name="BorderTop" Height="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderBottom" Height="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderLeft" Width="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderRight" Width="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
+    </Grid>
+</UserControl>

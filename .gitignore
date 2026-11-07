@@ -1,0 +1,13 @@
+# Build output
+bin/
+obj/
+dist/
+installer/build/
+.vs/
+*.user
+
+# Original reverse-engineering input (not redistributable)
+TheColourClockInstall.exe
+
+# Local uploads
+uploads/

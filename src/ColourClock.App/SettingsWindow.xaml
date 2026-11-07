@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ColourClock.App.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid x:Name="Root" Background="Transparent">
+
+        <!-- Diagonal blue gradient sampled from the original settings frame -->
+        <Rectangle x:Name="Background">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#00527B" Offset="0" />
+                    <GradientStop Color="#0083B6" Offset="0.5" />
+                    <GradientStop Color="#019DC3" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Canvas x:Name="Stage">
+
+            <TextBlock
+                x:Name="TitleText"
+                FontFamily="{StaticResource ClockFont}"
+                FontSize="12"
+                FontWeight="Medium"
+                Foreground="White"
+                Opacity="0.698"
+                Text="THE COLOUR CLOCK."
+                IsHitTestVisible="False" />
+
+            <TextBlock
+                x:Name="SubheadText"
+                FontFamily="{StaticResource ClockFont}"
+                FontSize="12"
+                FontWeight="Medium"
+                Foreground="White"
+                Opacity="0.447"
+                LineHeight="15"
+                LineStackingStrategy="BlockLineHeight"
+                Text="REPRESENTING TIME AS A HEXADECIMAL&#10;COLOUR VALUE."
+                IsHitTestVisible="False" />
+
+            <TextBlock
+                x:Name="InstructionText"
+                Width="400"
+                FontFamily="{StaticResource ClockFont}"
+                FontSize="12"
+                FontWeight="Medium"
+                Foreground="White"
+                Opacity="0.447"
+                LineHeight="15"
+                LineStackingStrategy="BlockLineHeight"
+                TextAlignment="Center"
+                Text="CHOOSE THE INFORMATION&#10;YOU WANT TO DISPLAY."
+                IsHitTestVisible="False" />
+
+            <!-- Close button (the window is borderless) -->
+            <TextBlock
+                x:Name="CloseButton"
+                Width="24"
+                FontFamily="Segoe UI Symbol"
+                FontSize="13"
+                Foreground="White"
+                Opacity="0.55"
+                TextAlignment="Right"
+                Text="&#x2715;" />
+
+            <!-- Three radio options are built in code (SettingsWindow.BuildOptions) -->
+            <Canvas x:Name="OptionsHost" IsHitTestVisible="True" />
+        </Canvas>
+
+        <!-- 1px border, 5px inset, 50% opacity -->
+        <Canvas x:Name="BorderLayer" Opacity="0.5" IsHitTestVisible="False">
+            <Rectangle x:Name="BorderTop" Height="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderBottom" Height="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderLeft" Width="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="BorderRight" Width="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#E6FFFFFF" Offset="0" />
+                        <GradientStop Color="#80FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#E6FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
+    </Grid>
+</Window>
